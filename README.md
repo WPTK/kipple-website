@@ -1,5 +1,7 @@
 # kipple-website
 
+Design/Code for the Kipple website. Outside of 1996 HTML, I'm out of my league.
+
 The public site for [Kipple](https://github.com/WPTK/Kipple), a self-hosted RSS reader. Plain HTML, CSS and a
 little JavaScript. There is no build step and no dependencies.
 
