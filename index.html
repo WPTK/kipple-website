@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kipple, a self-hosted RSS reader</title>
 <meta name="description" content="Self-hosted RSS reader that syncs with any RSS client that speaks the Google Reader API. One container, one port, SQLite.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kipple">
+<meta property="og:title" content="Kipple, a self-hosted RSS reader">
+<meta property="og:description" content="Self-hosted RSS reader that syncs with any RSS client that speaks the Google Reader API. One container, one port, SQLite.">
+<meta property="og:url" content="https://kipple.cc/">
+<meta property="og:image" content="https://kipple.cc/og.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="The word kipple in large serif type, the line Self-hosted RSS reader, and a screenshot of the Kipple web app.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -56,6 +69,29 @@
           <li><span>McSweeney's</span><span class="n">13</span></li>
           <li><span>Saturday Down South</span><span class="n">8</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect shots" id="screens">
+    <div class="wrap">
+      <div>
+        <h2>What it looks like</h2>
+      </div>
+      <p class="shots-note">The web app in Paper and Midnight, on desktop and on a phone. The sample feeds are public ones, including the Wikimedia Commons picture of the day. Photo credits and licenses are on Commons.</p>
+      <figure class="shot wide">
+        <img src="screenshots/desktop-paper.webp" width="1800" height="1125" alt="Kipple on a desktop in the Paper color scheme. A feed list on the left, article cards in the middle with a large photo of a jabiru and its chicks, and the article open on the right.">
+      </figure>
+      <div class="shot-row">
+        <figure class="shot">
+          <img src="screenshots/desktop-midnight.webp" width="1800" height="1125" alt="The same view in the Midnight color scheme, with a black background and light text.">
+        </figure>
+        <figure class="shot">
+          <img src="screenshots/phone-paper-reader.webp" width="585" height="1266" alt="Kipple on a phone in Paper, showing an article with a photo and caption.">
+        </figure>
+        <figure class="shot">
+          <img src="screenshots/phone-midnight-list.webp" width="585" height="1266" alt="Kipple on a phone in Midnight, showing the article list with large photos.">
+        </figure>
       </div>
     </div>
   </section>
@@ -142,7 +178,7 @@ docker compose -f docker-compose.example.yml up -d kipple</code></pre>
 
 <footer>
   <div class="wrap">
-    <span>Kipple is licensed under the <a href="https://github.com/WPTK/Kipple/blob/main/LICENSE">Blue Oak Model License 1.0.0</a>. Copyright Kipple contributors.</span>
+    <span>The Kipple app is licensed under the <a href="https://github.com/WPTK/Kipple/blob/main/LICENSE">Blue Oak Model License 1.0.0</a>. This site is in the public domain under the <a href="https://github.com/WPTK/kipple-website/blob/main/LICENSE">Unlicense</a>.</span>
     <span><a href="https://github.com/WPTK/Kipple">Source</a> &middot; <a href="https://github.com/WPTK/kipple-history">History</a> &middot; <a href="https://wptk.org">wptk.org</a></span>
   </div>
 </footer>

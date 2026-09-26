@@ -110,13 +110,14 @@ the site and were not taken from the app. If parity with the app matters, decide
 
 1. Header
 2. Hero
-3. "Why another RSS reader" (section)
-4. "How it works" (section)
-5. "Anti-features" (section)
-6. "Bring your own client" (section)
-7. "Build it" (section, id `install`)
-8. "Where it stands" (section)
-9. Footer
+3. "What it looks like" (section, id `screens`)
+4. "Why another RSS reader" (section)
+5. "How it works" (section)
+6. "Anti-features" (section)
+7. "Bring your own client" (section)
+8. "Build it" (section, id `install`)
+9. "Where it stands" (section)
+10. Footer
 
 ## 6. Components
 
@@ -171,6 +172,19 @@ A static drawing of the reader's feed list. Border `1px solid --line`, radius 4p
 - Story text (`.story`) and client text (`.clients`): grid, gap 1rem, max width 36rem (576px), paragraphs with
   no margin.
 
+### Screenshots (`.shots`)
+Uses the content-section grid. Left cell: the H2 "What it looks like". Right cell: a note paragraph (`.shots-note`,
+`--muted`, max width 32rem, aligned to the bottom of the row on desktop). Then two full-width rows.
+- Row 1 (`figure.shot.wide`): `screenshots/desktop-paper.webp`, 1800 x 1125, full column width.
+- Row 2 (`.shot-row`): grid with columns `minmax(0, 2fr) minmax(0, 0.6fr) minmax(0, 0.6fr)`, gap 1.5rem (24px),
+  `align-items: start`. Cells: `desktop-midnight.webp` (1800 x 1125), `phone-paper-reader.webp` (585 x 1266),
+  `phone-midnight-list.webp` (585 x 1266).
+- Every image: `display: block`, width 100%, height auto, `1px solid --line` border, radius 4px, no shadow, no
+  device frame. Each has descriptive alt text and explicit width and height attributes.
+- At or below 832px: `.shot-row` becomes two columns with gap 1rem (16px), and the first figure (the dark desktop
+  shot) spans both columns, so the two phones sit side by side beneath it.
+- Note copy: `The web app in Paper and Midnight, on desktop and on a phone. The sample feeds are public ones, including the Wikimedia Commons picture of the day. Photo credits and licenses are on Commons.`
+
 ### Fact list (`dl.facts`)
 - Grid, gap 1.1rem (17.6px), no margin.
 - Each row: grid with columns `7.5rem` (120px) and `minmax(0, 1fr)`, gap 0.5rem (8px) row and 1rem (16px)
@@ -222,8 +236,9 @@ for reduced motion. No other animation.
 - Definition: `kipple /ˈkɪpəl/ n. Philip K. Dick's word for the useless things that pile up when nobody is looking. Your unread count, mostly.`
 - Sample panel: big count `420`, label `unread across 6 feeds`. Feeds and counts: Unsung 187, 512 Pixels 101, Storied
   Colors 69, Electrek 42, McSweeney's 13, Saturday Down South 8. The counts total 420. Rows 1 and 2 are `hot`.
-- Section headings: Why another RSS reader / How it works / Anti-features / Bring your own client / Build it /
+- Section headings: What it looks like / Why another RSS reader / How it works / Anti-features / Bring your own client / Build it /
   Where it stands.
+- Footer: `The Kipple app is licensed under the Blue Oak Model License 1.0.0. This site is in the public domain under the Unlicense.` (each license name is a link), then links Source, History, wptk.org.
 - `index.html` is the canonical copy for every sentence. Do not paraphrase it when rebuilding.
 
 ## 9. Copy rules
@@ -240,13 +255,32 @@ for reduced motion. No other animation.
 - Links: https://github.com/WPTK/Kipple (source, changelog at `blob/main/CHANGELOG.md`, license at
   `blob/main/LICENSE`, deploy notes at `blob/main/docs/deploy.md`), https://github.com/WPTK/kipple-history,
   https://wptk.org.
-- No images. The sample panel is HTML and CSS, not a screenshot.
-- License of the app: Blue Oak Model License 1.0.0. Fonts: SIL Open Font License.
+- `screenshots/`: four WebP files listed in the Screenshots component. Captured from a throwaway instance of the app
+  (the app repo's `npm run seed`, with the seed feeds changed to Wikimedia Picture of the Day, Wikipedia Featured
+  Article, NASA Image of the Day, Go Blog and Hacker News, filed in a folder named "Less noise"), at commit
+  `beba9f3` of the app repo (branch phase3-pwa). Desktop: 1440 x 900 at 2x, resized to 1800 wide. Phone: 390 x 844 at
+  3x, resized to 585 wide. Light is the app's Paper scheme. Dark is the app following a dark system setting, which
+  gives Midnight. Article shown: Wikimedia Commons picture of the day for September 26 (a jabiru with chicks).
+- The hero sample panel (unread count 420) is HTML and CSS, not a screenshot.
+- Favicon: `favicon.svg`, `favicon.ico` (16, 32 and 48 px), `apple-touch-icon.png` (180 x 180).
+  The mark is the lowercase letter "k" from Vollkorn at weight 600, converted to a vector outline (no live text),
+  filling a 64 x 64 viewBox 44 units tall and centered. No background shape, no rounding, no gradient. Fill is
+  `#1a5fb4` in light and `#6db0ff` when the system is dark (SVG only, through `prefers-color-scheme`). The ICO is
+  transparent. The apple-touch icon is `#1a5fb4` on `#ffffff`.
+- Social preview: `og.png`, 1280 x 640. Source is `design-system/social-preview.html`. White (`#ffffff`)
+  background. The word "kipple" in Vollkorn 600 at 168px, `#16181d`, left 80px, top 92px. The line "Self-hosted RSS reader."
+  in Atkinson Hyperlegible Next 700 at 58px, line height 1.12, letter spacing -0.025em, `#16181d`, in a 440px column at
+  left 84px, top 300px. "kipple.cc" in JetBrains Mono at 26px, `#1a5fb4`, left 84px, 76px from the bottom. The
+  `desktop-paper.webp` screenshot at 900px wide, left 600px, top 96px, `1px solid #d8dde5`, radius 4px, cut off by the right
+  and bottom edges. Referenced by `og:image` at `https://kipple.cc/og.png`. GitHub's own social preview is a separate
+  upload in the repo settings (Settings, General, Social preview) and must be set by hand.
+- Licenses: the Kipple app is Blue Oak Model License 1.0.0. This site is the Unlicense (public domain). Fonts: SIL Open Font License.
 
 ## 11. Known gaps
 
-- The sample panel is a drawing. A real app screenshot has not been made.
+- Only the default Paper scheme was looked at in a browser by the assistant that wrote this file. The author has
+  looked at the other schemes in a browser and found them good.
 - Paper and Airmail differ from the app's schemes (section 4).
-- Only the default Paper scheme was looked at in a browser (desktop top of page, and phone width). The other five
-  schemes, dark mode, and the lower sections at desktop width have not been checked visually.
-- There is no logo mark, favicon or social preview image yet.
+- The screenshots use public sample feeds, not a real reading list. They were taken before the app's Phase 3 work is
+  released.
+- The GitHub repo social preview image has to be uploaded by hand.

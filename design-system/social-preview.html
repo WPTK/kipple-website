@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kipple social preview (1280 x 640)</title>
+<!-- Source for og.png. Render at exactly 1280x640 and save as ../og.png. Paper scheme values from style.css. -->
+<style>
+@font-face { font-family: "Atkinson Hyperlegible Next"; font-weight: 700; src: url("../fonts/atkinson-hyperlegible-next-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Atkinson Hyperlegible Next"; font-weight: 400; src: url("../fonts/atkinson-hyperlegible-next-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 100 800; src: url("../fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "Vollkorn"; font-weight: 400 900; src: url("../fonts/vollkorn-latin-wght-normal.woff2") format("woff2"); }
+html, body { margin: 0; width: 1280px; height: 640px; overflow: hidden; background: #ffffff; }
+.card { position: relative; width: 1280px; height: 640px; background: #ffffff; color: #16181d; }
+.mark { position: absolute; left: 80px; top: 92px; font-family: "Vollkorn", Georgia, serif; font-weight: 600; font-size: 168px; line-height: 1; letter-spacing: -0.01em; color: #16181d; }
+.tag { position: absolute; left: 84px; top: 300px; width: 440px; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; font-weight: 700; font-size: 58px; line-height: 1.12; letter-spacing: -0.025em; color: #16181d; }
+.url { position: absolute; left: 84px; bottom: 76px; font-family: "JetBrains Mono", monospace; font-size: 26px; color: #1a5fb4; }
+.shot { position: absolute; left: 600px; top: 96px; width: 900px; border: 1px solid #d8dde5; border-radius: 4px; display: block; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="mark">kipple</div>
+  <div class="tag">Self-hosted RSS reader.</div>
+  <div class="url">kipple.cc</div>
+  <img class="shot" src="../screenshots/desktop-paper.webp" alt="">
+</div>
+</body>
+</html>
