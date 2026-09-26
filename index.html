@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kipple, a self-hosted RSS reader</title>
+<meta name="description" content="Self-hosted RSS reader that syncs with Reeder Classic and NetNewsWire over the Google Reader API. One container, one port, SQLite.">
+<link rel="preload" href="fonts/atkinson-hyperlegible-next-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="/">kipple</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#install">Install</a>
+      <a href="https://github.com/WPTK/Kipple/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="https://github.com/WPTK/Kipple">GitHub</a>
+    </nav>
+    <div class="schemes" role="group" aria-label="Color scheme">
+      <button type="button" data-pick="auto" aria-pressed="true">Auto</button>
+      <button type="button" data-pick="paper" aria-pressed="false">Paper</button>
+      <button type="button" data-pick="airmail" aria-pressed="false">Airmail</button>
+      <button type="button" data-pick="newsprint" aria-pressed="false">Newsprint</button>
+      <button type="button" data-pick="directory" aria-pressed="false">Directory</button>
+      <button type="button" data-pick="parchment" aria-pressed="false">Parchment</button>
+      <button type="button" data-pick="midnight" aria-pressed="false">Midnight</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Self-hosted RSS reader.</h1>
+        <p class="lede">Kipple syncs with Reeder Classic and NetNewsWire, keeps everything in SQLite, and runs as one container on one port. It's built to look good while you read.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/WPTK/Kipple">View on GitHub</a>
+          <a class="btn plain" href="#install">Build it</a>
+        </div>
+        <p class="defn"><b>kipple</b> <span class="ipa">/ˈkɪpəl/</span> n. Philip K. Dick's word for the useless things that pile up when nobody is looking. Your unread count, mostly.</p>
+      </div>
+
+      <div class="panel" aria-label="Sample of the Kipple feed list">
+        <div class="panel-head">
+          <span class="count">1,284</span>
+          <span class="count-label">unread<br>across 61 feeds</span>
+        </div>
+        <ul class="feeds">
+          <li class="hot"><span>Ars Technica</span><span class="n">207</span></li>
+          <li class="hot"><span>Hacker News: Best</span><span class="n">118</span></li>
+          <li><span>The Verge</span><span class="n">64</span></li>
+          <li><span>Daring Fireball</span><span class="n">3</span></li>
+          <li><span>Julia Evans</span><span class="n">1</span></li>
+          <li><span>Kottke.org</span><span class="n">0</span></li>
+        </ul>
+        <div class="panel-note">Sample feeds. The real reader is the web app you get with the container.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap">
+      <div>
+        <h2>Why another RSS reader</h2>
+      </div>
+      <div class="story">
+        <p>I wanted one reader with the best parts of all the others, and I didn't want to give up a good-looking app to get it. So I started building one with Claude Code and kept going.</p>
+        <p>Feedly's magazine layout is the look. FreshRSS and Miniflux set the flavor of the sync API. It replaced yarr on my own server, and it's what I read my feeds in now.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap">
+      <div>
+        <h2>How it works</h2>
+      </div>
+      <dl class="facts">
+        <div><dt>refresh</dt><dd>Every 30 minutes, or on a schedule of its own for any feed that needs one. A feed that keeps failing gets checked less and less often instead of hammered.</dd></div>
+        <div><dt>retention</dt><dd>Each feed keeps its newest 50, 100, 250, 500 or 1000 items, or everything. Set it once for all feeds, then override the noisy ones.</dd></div>
+        <div><dt>sync</dt><dd>The Google Reader API, the one FreshRSS and Miniflux speak, at <code>/api/greader.php</code>. No Fever.</dd></div>
+        <div><dt>themes</dt><dd>20 color schemes, with separate picks for day and night. The buttons at the top of this page are the real ones.</dd></div>
+        <div><dt>fonts</dt><dd>Eleven fonts ship inside the container, so opening Kipple never calls out to a font CDN.</dd></div>
+        <div><dt>stats</dt><dd>Reading time only counts while the tab is in front and focused. Leaving it open overnight doesn't make you a fast reader.</dd></div>
+        <div><dt>runs as</dt><dd>uid 65532 on a read-only filesystem, every Linux capability dropped, capped at 256 MB of memory.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap">
+      <h2>Anti-features</h2>
+      <div>
+        <ul class="plain">
+          <li>No AI</li>
+          <li>No notifications</li>
+          <li>No social</li>
+          <li>No monitoring or telemetry*</li>
+        </ul>
+        <p class="after-code">*Unless you turn on reading stats. Those are stored locally, in your own database, and they never leave it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap">
+      <h2>Reeder and NetNewsWire</h2>
+      <div class="clients">
+        <p>Reeder Classic is the primary client and NetNewsWire is the second. Both get tested. Anything else that speaks the Google Reader API might work, but I haven't tried it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect" id="install">
+    <div class="wrap">
+      <div>
+        <h2>Build it</h2>
+        <p>There's no published image yet, so you build it from source. Docker is all you need.</p>
+      </div>
+      <div>
+<pre><code><span class="c"># get the source and build the image</span>
+git clone https://github.com/WPTK/Kipple.git
+cd Kipple
+cp .env.example .env
+docker build -t kipple:latest .
+
+<span class="c"># start it</span>
+docker compose -f docker-compose.example.yml up -d kipple</code></pre>
+        <p class="after-code">Open <code>127.0.0.1:7080</code>. To bring your feeds over, pipe an OPML file into <code>kipple import -</code>. Backups, recovery and reverse-proxy notes are in <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">docs/deploy.md</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap">
+      <h2>Where it stands</h2>
+      <p class="status"><span class="mono">v0.3.0-alpha.1</span> is the first public build. Fetching, sync and the reading UI run daily. Installable-app and offline support are next.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Kipple is licensed under the <a href="https://github.com/WPTK/Kipple/blob/main/LICENSE">Blue Oak Model License 1.0.0</a>. Copyright Kipple contributors.</span>
+    <a href="https://github.com/WPTK/Kipple">github.com/WPTK/Kipple</a>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+</body>
+</html>
