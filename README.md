@@ -35,5 +35,5 @@ viewers, so use the server.
 
 ## Hosting
 
-GitHub Pages from the `main` branch, root folder, with `kipple.cc` as the custom domain (add a `CNAME` file
-containing `kipple.cc` when the DNS is ready).
+GitHub Pages from the `main` branch, root folder, with `kipple.cc` as the custom domain (the `CNAME` file holds it).
+The repo is released under the Unlicense (see `LICENSE`).
