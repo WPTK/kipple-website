@@ -247,6 +247,6 @@ for reduced motion. No other animation.
 
 - The sample panel is a drawing. A real app screenshot has not been made.
 - Paper and Airmail differ from the app's schemes (section 4).
-- Only two of the seven states were checked at desktop width and one at phone width. Dark schemes and the
-  desktop layout below the fold have not been checked in a browser at every scheme.
+- Only the default Paper scheme was looked at in a browser (desktop top of page, and phone width). The other five
+  schemes, dark mode, and the lower sections at desktop width have not been checked visually.
 - There is no logo mark, favicon or social preview image yet.

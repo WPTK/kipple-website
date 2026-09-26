@@ -9,6 +9,8 @@ little JavaScript. There is no build step and no dependencies.
 - `style.css` holds the design tokens (color schemes) and all layout.
 - `theme.js` is the color scheme switcher. With no choice stored, the page follows the system: Paper by day,
   Midnight by night.
+- `design-system/` holds `DESIGN-SYSTEM.md` (exact spec of every value used) and `tokens.json` (the same tokens in the
+  W3C design-tokens format, importable into Figma with Tokens Studio).
 - `fonts/` holds the self-hosted fonts (Atkinson Hyperlegible Next, JetBrains Mono, Vollkorn), copied from
   `@fontsource`. All are SIL Open Font License. The site makes no third-party requests.
 
