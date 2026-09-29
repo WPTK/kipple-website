@@ -259,7 +259,7 @@ for reduced motion. No other animation.
   by the app repo's `web/scripts/site-shots.mjs` (run at every release, `docs/RELEASING.md` step 12), after
   `KIPPLE_SEED_SET=site npm run seed`, which seeds Wikimedia Picture of the Day, Wikipedia Featured Article, NASA
   Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-09-29 at app commit
-  `0fa8450` (`v0.3.0-beta.2`). Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
+  `46da6a6` (`v0.3.0-beta.3`). Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
   at 1.5x, giving 585 x 1266. The list uses the device's default layout (Editorial). Light is the app's Paper scheme.
   Dark is the app following a dark system setting, which gives Midnight. Article shown: the Wikimedia Commons picture
   of the day for September 29 (the ceiling painting in the Vatican Museums). The WebP files are encoded by the browser
