@@ -256,11 +256,14 @@ for reduced motion. No other animation.
   `blob/main/LICENSE`, deploy notes at `blob/main/docs/deploy.md`), https://github.com/WPTK/kipple-history,
   https://wptk.org.
 - `screenshots/`: four WebP files listed in the Screenshots component. Captured from a throwaway instance of the app
-  (the app repo's `npm run seed`, with the seed feeds changed to Wikimedia Picture of the Day, Wikipedia Featured
-  Article, NASA Image of the Day, Go Blog and Hacker News, filed in a folder named "Less noise"), at commit
-  `beba9f3` of the app repo (branch phase3-pwa). Desktop: 1440 x 900 at 2x, resized to 1800 wide. Phone: 390 x 844 at
-  3x, resized to 585 wide. Light is the app's Paper scheme. Dark is the app following a dark system setting, which
-  gives Midnight. Article shown: Wikimedia Commons picture of the day for September 26 (a jabiru with chicks).
+  by the app repo's `web/scripts/site-shots.mjs` (run at every release, `docs/RELEASING.md` step 12), after
+  `KIPPLE_SEED_SET=site npm run seed`, which seeds Wikimedia Picture of the Day, Wikipedia Featured Article, NASA
+  Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-09-29 at app commit
+  `0fa8450` (`v0.3.0-beta.2`). Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
+  at 1.5x, giving 585 x 1266. The list uses the device's default layout (Editorial). Light is the app's Paper scheme.
+  Dark is the app following a dark system setting, which gives Midnight. Article shown: the Wikimedia Commons picture
+  of the day for September 29 (the ceiling painting in the Vatican Museums). The WebP files are encoded by the browser
+  at quality 0.85. `og.png` is re-rendered by the same script from `design-system/social-preview.html`.
 - The hero sample panel (unread count 420) is HTML and CSS, not a screenshot.
 - Favicon: `favicon.svg`, `favicon.ico` (16, 32 and 48 px), `apple-touch-icon.png` (180 x 180).
   The mark is the lowercase letter "k" from Vollkorn at weight 600, converted to a vector outline (no live text),
@@ -281,6 +284,6 @@ for reduced motion. No other animation.
 - Only the default Paper scheme was looked at in a browser by the assistant that wrote this file. The author has
   looked at the other schemes in a browser and found them good.
 - Paper and Airmail differ from the app's schemes (section 4).
-- The screenshots use public sample feeds, not a real reading list. They were taken before the app's Phase 3 work is
-  released.
+- The screenshots use public sample feeds, not a real reading list, and show whatever those feeds published on the day
+  they were captured.
 - The GitHub repo social preview image has to be uploaded by hand.
