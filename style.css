@@ -187,6 +187,24 @@ pre .c { color: var(--muted); }
 .status { margin: 0; }
 .status .mono { font-size: 0.9rem; }
 
+.setup-text { color: var(--muted); max-width: 40rem; }
+.setup-text p { margin: 0 0 1rem; }
+.setup-text code { color: var(--ink); font-size: 0.9em; }
+.setup-text .notice { color: var(--ink); border-left: 3px solid var(--accent); padding-left: 1rem; }
+.shot-row.steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+
+/* skip link: off screen until it has keyboard focus */
+.skip {
+  position: absolute; left: 1.25rem; top: -4rem; z-index: 10;
+  background: var(--accent); color: var(--on-accent); font-weight: 600;
+  padding: 0.65rem 1.1rem; border-radius: 3px; text-decoration: none;
+}
+.skip:focus { top: 0.5rem; }
+
+/* tap targets: inline links in running text and the footer reach at least 24px tall */
+p a, dd a, footer a { padding-block: 0.25rem; }
+footer a { display: inline-block; }
+
 footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; font-size: 0.875rem; color: var(--muted); }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content: space-between; }
 
@@ -198,6 +216,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content
   .shot-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
   .shot-row .shot:first-child { grid-column: 1 / -1; }
   .shots-note { align-self: start; }
+  .shot-row.steps { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-reduced-motion: no-preference) {

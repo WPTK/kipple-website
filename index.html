@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="wrap">
@@ -43,7 +44,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="hero">
     <div class="wrap">
       <div>
@@ -51,7 +52,7 @@
         <p class="lede">Kipple syncs with the RSS apps you already use, keeps everything in SQLite, and runs as one container on one port. It's built to look good while you read.</p>
         <div class="cta">
           <a class="btn primary" href="https://github.com/WPTK/Kipple">View on GitHub</a>
-          <a class="btn plain" href="#install">Build it</a>
+          <a class="btn plain" href="#install">Install it</a>
         </div>
         <p class="defn"><b>kipple</b> <span class="ipa">/ˈkɪpəl/</span> n. Philip K. Dick's word for the useless things that pile up when nobody is looking. Your unread count, mostly.</p>
       </div>
@@ -151,19 +152,50 @@
   <section class="sect" id="install">
     <div class="wrap">
       <div>
-        <h2>Build it</h2>
-        <p>A published Docker image is planned but not out yet. Until then you build it from source, and Docker is all you need.</p>
+        <h2>Install it</h2>
+        <p>Kipple is a signed Docker image for linux/amd64 and linux/arm64. There are no config files to edit. It asks for what it needs in your browser the first time you open it.</p>
       </div>
       <div>
-<pre><code><span class="c"># get the source and build the image</span>
-git clone https://github.com/WPTK/Kipple.git
-cd Kipple
-cp .env.example .env
-docker build -t kipple:latest .
+<pre><code>docker run -d --name kipple --restart unless-stopped -p 127.0.0.1:1919:1919 -v kipple_data:/data --read-only --tmpfs /tmp:size=64m,mode=1777 --cap-drop ALL --security-opt no-new-privileges ghcr.io/wptk/kipple:0.5.0-beta.1</code></pre>
+        <p class="after-code">Or the same thing as a compose file. Save it as <code>docker-compose.yml</code> and run <code>docker compose up -d</code>.</p>
+<pre><code>services:
+  kipple:
+    image: ghcr.io/wptk/kipple:0.5.0-beta.1
+    container_name: kipple
+    restart: unless-stopped
+    ports: ["127.0.0.1:1919:1919"]
+    volumes: ["kipple_data:/data"]
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+volumes:
+  kipple_data:</code></pre>
+        <p class="after-code">Open <code>http://127.0.0.1:1919</code>. The port is 1919 and it is published on this machine only. A prerelease is tagged only with its exact version, so the examples name one. Prefer to build it yourself? The <a href="https://github.com/WPTK/Kipple#build-from-source">README</a> has the steps, and Docker is all you need. Backups, recovery and reverse-proxy notes are in <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">docs/deploy.md</a>.</p>
+      </div>
+    </div>
+  </section>
 
-<span class="c"># start it</span>
-docker compose -f docker-compose.example.yml up -d kipple</code></pre>
-        <p class="after-code">Open <code>127.0.0.1:7080</code>. To bring your feeds over, pipe an OPML file into <code>kipple import -</code>. Backups, recovery and reverse-proxy notes are in <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">docs/deploy.md</a>.</p>
+  <section class="sect shots" id="setup">
+    <div class="wrap">
+      <div>
+        <h2>First run</h2>
+      </div>
+      <div class="setup-text">
+        <p>The first time you open Kipple it says it is not set up and asks for a setup code. The code is printed once in the container's log, so <code>docker logs kipple</code> shows it. If it has scrolled away, <code>docker exec kipple /kipple setup-token</code> prints it again. Only someone who can read the log can claim your Kipple.</p>
+        <p>The wizard takes about a minute and every step after the account can be skipped. The steps are the setup code, your account, time zone, theme, an import from your old reader (OPML), a few recommended feeds, and an optional Reader API password for the apps that sync.</p>
+        <p class="notice"><b>No password?</b> The account step offers to go without one. An instance with no password must only be reachable from localhost or over <a href="https://tailscale.com/">Tailscale</a>. Anyone who can reach it can read and change everything. Kipple refuses open sign-in through a reverse proxy or tunnel.</p>
+      </div>
+      <div class="shot-row steps">
+        <figure class="shot">
+          <img src="screenshots/wizard-code.webp" width="900" height="680" alt="Setup step 1 of 7, Enter your setup code: a text field holding a code of six groups of four letters and digits, with a link that says where to find the code.">
+        </figure>
+        <figure class="shot">
+          <img src="screenshots/wizard-account.webp" width="900" height="1150" alt="Setup step 2 of 7, Create your account: a user name field and two choices, With a password, selected, and No password at all, with a note that it is only for a Kipple reachable from this computer or over Tailscale.">
+        </figure>
+        <figure class="shot">
+          <img src="screenshots/wizard-theme.webp" width="900" height="1250" alt="Setup step 4 of 7, Look and feel: day and night theme pickers showing Paper and Midnight previews, and a reading font picker.">
+        </figure>
       </div>
     </div>
   </section>
@@ -171,7 +203,7 @@ docker compose -f docker-compose.example.yml up -d kipple</code></pre>
   <section class="sect">
     <div class="wrap">
       <h2>Where it stands</h2>
-      <p class="status"><span class="mono">v0.3.0-beta.3</span> is the current build. Fetching, sync, the reading UI, the installable offline-capable app, and reading stats with a yearly Wrapped all run daily. Testing before 1.0 is under way. The diary, decisions and dead ends from building it are in <a href="https://github.com/WPTK/kipple-history">kipple-history</a>.</p>
+      <p class="status"><span class="mono">v0.5.0-beta.1</span> is the current build. It adds the setup wizard and the published, signed Docker image. Fetching, sync, the reading UI, the installable offline-capable app, and reading stats with a yearly Wrapped all run daily. Testing before 1.0 is under way, and the next release candidate is not due before 2026-10-07. The diary, decisions and dead ends from building it are in <a href="https://github.com/WPTK/kipple-history">kipple-history</a>.</p>
     </div>
   </section>
 </main>
