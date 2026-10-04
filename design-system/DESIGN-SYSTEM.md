@@ -260,11 +260,11 @@ for reduced motion. No other animation.
 - Links: https://github.com/WPTK/Kipple (source, changelog at `blob/main/CHANGELOG.md`, license at
   `blob/main/LICENSE`, deploy notes at `blob/main/docs/deploy.md`), https://github.com/WPTK/kipple-history,
   https://wptk.org.
-- `screenshots/`: four WebP files listed in the Screenshots component, plus three wizard shots (`wizard-account.webp` 864 x 1289, `wizard-timezone.webp` 864 x 1113, `wizard-theme.webp` 864 x 1344) shown in the First run section as `.shot-row.steps` (three equal columns, one column at or below 832px). The wizard shots were taken on 2026-10-03 at app commit `28768e2` (`v0.7.0-beta.1`) from a throwaway instance started with `KIPPLE_SEED_SET=fresh npm run seed`, in a 1000px wide viewport at 1.5x with the Paper scheme, each cropped to the 576px wide wizard column and as tall as its content (steps 1 to 3 of 6). The four main screenshots were not recaptured because the reading UI did not visibly change. Captured from a throwaway instance of the app
+- `screenshots/`: four WebP files listed in the Screenshots component, plus three wizard shots (`wizard-account.webp` 864 x 1289, `wizard-timezone.webp` 864 x 1113, `wizard-theme.webp` 864 x 1344) shown in the First run section as `.shot-row.steps` (three equal columns, one column at or below 832px). The wizard shots were taken on 2026-10-03 at app commit `28768e2` (`v0.7.0-beta.1`) from a throwaway instance started with `KIPPLE_SEED_SET=fresh npm run seed`, in a 1000px wide viewport at 1.5x with the Paper scheme, each cropped to the 576px wide wizard column and as tall as its content (steps 1 to 3 of 6). Captured from a throwaway instance of the app
   by the app repo's `web/scripts/site-shots.mjs` (run at every release, `docs/RELEASING.md` step 12), after
   `KIPPLE_SEED_SET=site npm run seed`, which seeds Wikimedia Picture of the Day, Wikipedia Featured Article, NASA
-  Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-09-29 at app commit
-  `46da6a6` (`v0.3.0-beta.3`). Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
+  Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-10-04 at app commit
+  `v0.8.0-beta.1`, after nesting two folders ("Pictures" and "Reading") under "Less noise" through the API so the sidebar shows a tree. Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
   at 1.5x, giving 585 x 1266. The list uses the device's default layout (Editorial). Light is the app's Paper scheme.
   Dark is the app following a dark system setting, which gives Midnight. Article shown: the Wikimedia Commons picture
   of the day for September 29 (the ceiling painting in the Vatican Museums). The WebP files are encoded by the browser
