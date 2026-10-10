@@ -157,11 +157,11 @@
         <p>Kipple is a signed Docker image for linux/amd64 and linux/arm64. There are no config files to edit. It asks for what it needs in your browser the first time you open it.</p>
       </div>
       <div>
-<pre><code>docker run -d --name kipple --restart unless-stopped -p 127.0.0.1:1919:1919 -v kipple_data:/data --read-only --tmpfs /tmp:size=64m,mode=1777 --cap-drop ALL --security-opt no-new-privileges ghcr.io/wptk/kipple:0.8.0-beta.5</code></pre>
+<pre><code>docker run -d --name kipple --restart unless-stopped -p 127.0.0.1:1919:1919 -v kipple_data:/data --read-only --tmpfs /tmp:size=64m,mode=1777 --cap-drop ALL --security-opt no-new-privileges ghcr.io/wptk/kipple:0.8.0-beta.8</code></pre>
         <p class="after-code">Or the same thing as a compose file. Save it as <code>docker-compose.yml</code> and run <code>docker compose up -d</code>.</p>
 <pre><code>services:
   kipple:
-    image: ghcr.io/wptk/kipple:0.8.0-beta.5
+    image: ghcr.io/wptk/kipple:0.8.0-beta.8
     container_name: kipple
     restart: unless-stopped
     ports: ["127.0.0.1:1919:1919"]
@@ -204,7 +204,7 @@ volumes:
   <section class="sect">
     <div class="wrap">
       <h2>Where it stands</h2>
-      <p class="status"><span class="mono">v0.8.0-beta.7</span> is the current build. A new install opens on a form that creates your account or restores a backup, and Kipple is also published as a signed Docker image. Fetching, sync, the reading UI with a newspaper-style Gazette layout, nested folders, the installable offline-capable app, and reading stats with a yearly Wrapped all run daily. Testing before 1.0 is under way. The diary, decisions and dead ends from building it are in <a href="https://github.com/WPTK/kipple-history">kipple-history</a>.</p>
+      <p class="status"><span class="mono">v0.8.0-beta.8</span> is the current build. A new install opens on a form that creates your account or restores a backup, and Kipple is also published as a signed Docker image. Fetching, sync, the reading UI with a newspaper-style Gazette layout, nested folders, the installable offline-capable app, and reading stats with a yearly Wrapped all run daily. Testing before 1.0 is under way. The diary, decisions and dead ends from building it are in <a href="https://github.com/WPTK/kipple-history">kipple-history</a>.</p>
     </div>
   </section>
 </main>
