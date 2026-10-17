@@ -38,3 +38,10 @@ viewers, so use the server.
 
 GitHub Pages from the `main` branch, root folder, with `kipple.cc` as the custom domain (the `CNAME` file holds it).
 The repo is released under the Unlicense (see `LICENSE`).
+
+## Checks
+
+`npm ci && npm run check` runs HTML validation (html-validate), image checks (files exist, width/height match, og size),
+a forbidden-text scan (reader app names, emails, IPs, unlisted hostnames) and internal link checks. External links are
+checked weekly by CI (`npm run check:external`; retries, 403 and 429 accepted). Dev-only: to remove, delete
+`package.json`, `package-lock.json`, `.htmlvalidate.json`, `scripts/` and `.github/workflows/checks.yml`.

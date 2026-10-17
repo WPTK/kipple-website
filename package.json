@@ -1,0 +1,17 @@
+{
+  "name": "kipple-website",
+  "private": true,
+  "description": "Checks only. The site itself has no build step.",
+  "type": "module",
+  "scripts": {
+    "check": "npm run check:html && npm run check:images && npm run check:text && npm run check:links",
+    "check:html": "html-validate index.html",
+    "check:images": "node scripts/check-images.mjs",
+    "check:text": "node scripts/check-text.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:external": "node scripts/check-links.mjs --external"
+  },
+  "devDependencies": {
+    "html-validate": "^9.0.0"
+  }
+}
