@@ -172,7 +172,7 @@
     security_opt: ["no-new-privileges:true"]
 volumes:
   kipple_data:</code></pre>
-        <p class="after-code">Open <code>http://127.0.0.1:1919</code>. The port is 1919 and it is published on this machine only. A prerelease is tagged only with its exact version, so the examples name one. Prefer to build it yourself? The <a href="https://github.com/WPTK/Kipple#build-from-source">README</a> has the steps, and Docker is all you need. Backups, recovery and reverse-proxy notes are in <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">docs/deploy.md</a>.</p>
+        <p class="after-code">Open <code>http://127.0.0.1:1919</code>. The port is 1919 and it is published on this machine only. A prerelease is tagged only with its exact version, so the examples name one. Prefer to build it yourself? The <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md#build-from-source">deploy guide</a> has the steps, and Docker is all you need. Backups, recovery and reverse-proxy notes are in <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">docs/deploy.md</a>.</p>
       </div>
     </div>
   </section>
@@ -184,7 +184,7 @@ volumes:
       </div>
       <div class="setup-text">
         <p>The first time you open Kipple it starts a short setup wizard, and its first screen creates your account.</p>
-        <p>The wizard takes about a minute and every step after the account can be skipped. The steps are your account, time zone, look and feel (day and night themes and the reading font), an import from your old reader (OPML), a few recommended feeds, and an optional Reader API password for the apps that sync.</p>
+        <p>The wizard takes about a minute and every step after the account can be skipped. The steps are your account, time zone, look and feel (day and night themes and the reading font), an import from your old reader (OPML), a few recommended feeds, the address your other devices will use, and an optional Reader API password for the apps that sync.</p>
         <p class="notice"><b>No password?</b> The account step offers to go without one. An instance with no password must only be reachable from localhost or over <a href="https://tailscale.com/">Tailscale</a>. Anyone who can reach it can read and change everything. Kipple refuses open sign-in through a reverse proxy or tunnel.</p>
       </div>
       <div class="shot-row steps">
