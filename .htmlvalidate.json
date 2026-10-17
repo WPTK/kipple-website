@@ -6,7 +6,6 @@
     "no-trailing-whitespace": "off",
     "void-style": "off",
     "doctype-style": "off",
-    "aria-label-misuse": "off",
     "attribute-boolean-style": "off"
   }
 }

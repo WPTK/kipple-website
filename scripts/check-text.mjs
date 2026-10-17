@@ -3,22 +3,35 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
-const EXT = new Set(['.html', '.css', '.js', '.json', '.md', '.txt', '.svg']);
-const SKIP = new Set(['.git', '.claude', 'node_modules', 'fonts', 'scripts']);
-const SKIP_FILES = new Set(['package-lock.json', 'README.md']);
+const EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.md', '.txt', '.svg']);
+const SKIP = new Set(['.git', '.claude', 'node_modules', 'fonts']);
+const SKIP_FILES = new Set(['package-lock.json']);
 
-const APPS = ['reeder', 'netnewswire', 'fiery feeds', 'readkit', 'feedme', 'vienna', 'news\\+', 'newsboat', 'feedly', 'inoreader',
-  'newsblur', 'freshrss', 'miniflux', 'yarr', 'fever', 'tiny tiny rss', 'ttrss', 'feedbin', 'lire',
-  'feedreader', 'readrops', 'fluent reader'];
+// The forbidden app names are written with a "~" in the middle so this file does not trip its own check.
+// "Unread" is a Kipple tab name, so it is deliberately not listed.
+const APPS = ['ree~der', 'net~newswire', 'fiery~ feeds', 'read~kit', 'feed~me', 'vien~na', 'news~\\+', 'news~boat', 'feed~ly',
+  'inore~ader', 'news~blur', 'fresh~rss', 'mini~flux', 'yar~r', 'fev~er', 'tiny~ tiny~ rss', 'tt~rss', 'feed~bin', 'li~re',
+  'feed~reader', 'read~rops', 'fluent~ reader', 'news~flash', 'read~ you', 'capy~ reader', 'life~rea', 'rss~ guard',
+  'the~ old~ reader', 'baz~qux'].map((s) => s.replaceAll('~', ''));
+// Extra private terms (real names, hosts, accounts) come from the FORBIDDEN_TERMS environment variable, a comma
+// separated list read at runtime. CI supplies it from the FORBIDDEN_TERMS repository secret; unset means no extras.
+const EXTRA = (process.env.FORBIDDEN_TERMS ?? '').split(',').map((s) => s.trim()).filter(Boolean)
+  .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+const wordRe = (list) => new RegExp(`(^|[^\\w])(${list.join('|')})(?![\\w])`, 'i');
+const ASSET_EXT = new Set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'avif', 'svg', 'ico']);
 const rules = [
-  ['reader app name (say "Google Reader compatible")', new RegExp(`(^|[^\\w])(${APPS.join('|')})(?![\\w])`, 'i')],
-  ['email address', /[\w.+-]+@[\w-]+\.[\w.-]+/],
+  ['reader app name (say "Google Reader compatible")', wordRe(APPS)],
+  ...(EXTRA.length ? [['forbidden term from FORBIDDEN_TERMS', wordRe(EXTRA)]] : []),
   ['IPv4 address', /\b(?!127\.0\.0\.1\b)\d{1,3}(\.\d{1,3}){3}\b/],
-  ['internal hostname', /\b[\w-]+\.(local|lan|internal|home|ts\.net)\b/i],
+  ['internal hostname', /\b[\w-]+\.(local|lan|internal|home|ts\.net|corp|localdomain|arpa|intranet)\b/i],
 ];
-// Hostnames in URLs must be on this list.
+// Hostnames in URLs must be on this list. On github.com the path must start with /WPTK/.
 const HOSTS = new Set(['github.com', 'kipple.cc', 'tailscale.com', 'wptk.org', '127.0.0.1', 'localhost', 'www.w3.org']);
 
+// An email needs a letters-only TLD; names like icon@2x.png are image files, not addresses.
+function emails(line) {
+  return [...line.matchAll(/[\w.+-]+@[\w-]+(?:\.[\w-]+)*\.([A-Za-z]{2,})(?![\w-])/g)].filter((m) => !ASSET_EXT.has(m[1].toLowerCase()));
+}
 function* walk(d) {
   for (const n of readdirSync(d)) {
     if (SKIP.has(n) || SKIP_FILES.has(n)) continue;
@@ -32,9 +45,11 @@ const errors = [];
 for (const f of walk('.')) {
   readFileSync(f, 'utf8').split(/\r?\n/).forEach((line, i) => {
     for (const [name, re] of rules) if (re.test(line)) errors.push(`${f}:${i + 1}: ${name}: ${line.trim().slice(0, 100)}`);
-    for (const m of line.matchAll(/https?:\/\/([^/\s"'<>)]+)/g)) {
+    if (emails(line).length) errors.push(`${f}:${i + 1}: email address: ${line.trim().slice(0, 100)}`);
+    for (const m of line.matchAll(/https?:\/\/([^/\s"'<>)]+)(\/[^\s"'<>)]*)?/g)) {
       const h = m[1].replace(/:\d+$/, '').replace(/[.,;]+$/, '');
       if (!HOSTS.has(h)) errors.push(`${f}:${i + 1}: hostname not on allowlist: ${h}`);
+      else if (h === 'github.com' && !/^\/WPTK(\/|$)/.test(m[2] ?? '')) errors.push(`${f}:${i + 1}: github.com URL outside /WPTK/: ${m[0]}`);
     }
   });
 }
