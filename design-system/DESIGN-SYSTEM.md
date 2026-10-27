@@ -110,15 +110,11 @@ the site and were not taken from the app. If parity with the app matters, decide
 
 1. Header
 2. Hero
-3. "What it looks like" (section, id `screens`)
-4. "Why another RSS reader" (section)
-5. "How it works" (section)
-6. "Anti-features" (section)
-7. "Bring your own client" (section)
-8. "Install it" (section, id `install`)
-9. "First run" (section, id `setup`, uses the screenshots grid)
-10. "Where it stands" (section)
-11. Footer
+3. "Screenshots" (section, id `screens`)
+4. "What's different" (section)
+5. "Install" (section, id `install`)
+6. "Where it stands" (section)
+7. Footer
 
 ## 6. Components
 
@@ -241,8 +237,7 @@ for reduced motion. No other animation.
 - Definition: `kipple /ˈkɪpəl/ n. Philip K. Dick's word for the useless things that pile up when nobody is looking. Your unread count, mostly.`
 - Sample panel: big count `420`, label `unread across 6 feeds`. Feeds and counts: Unsung 187, 512 Pixels 101, Storied
   Colors 69, Electrek 42, McSweeney's 13, Saturday Down South 8. The counts total 420. Rows 1 and 2 are `hot`.
-- Section headings: What it looks like / Why another RSS reader / How it works / Anti-features / Bring your own client / Install it / First run /
-  Where it stands.
+- Section headings: Screenshots / What's different / Install / Where it stands.
 - Footer: `The Kipple app is licensed under the Blue Oak Model License 1.0.0. This site is in the public domain under the Unlicense.` (each license name is a link), then links Source, History, wptk.org.
 - `index.html` is the canonical copy for every sentence. Do not paraphrase it when rebuilding.
 
@@ -252,7 +247,7 @@ for reduced motion. No other animation.
 - No em dashes, no colon-as-connector, no "not X but Y", no marketing adjectives, no emoji.
 - Do not name other RSS readers or apps anywhere.
 - No real names or hostnames. Copyright line reads "Kipple contributors".
-- The Install it section shows the published image (`ghcr.io/wptk/kipple:<version>`), the one-line `docker run` and the short compose file from the app README. Update the tag in both with every release. The First run section must keep the notice that an instance with no password belongs only on localhost or Tailscale.
+- The Install section is one sentence that points to the README and the deploy guide. It carries no command or image tag. "Where it stands" holds the current version; update it with every release.
 
 ## 10. Assets and links
 
@@ -260,7 +255,7 @@ for reduced motion. No other animation.
 - Links: https://github.com/WPTK/Kipple (source, changelog at `blob/main/CHANGELOG.md`, license at
   `blob/main/LICENSE`, deploy notes at `blob/main/docs/deploy.md`), https://github.com/WPTK/kipple-history,
   https://wptk.org.
-- `screenshots/`: four WebP files listed in the Screenshots component, plus three wizard shots (`wizard-account.webp` 864 x 1424, `wizard-timezone.webp` 864 x 1113, `wizard-theme.webp` 864 x 1344) shown in the First run section as `.shot-row.steps` (three equal columns, one column at or below 832px). The wizard shots were taken on 2026-10-17 at app commit `11cb2402` (`v1.0.0-rc.1`) from a throwaway instance started with `KIPPLE_SEED_SET=fresh npm run seed`, in a 1000px wide viewport at 1.5x with the Paper scheme, each cropped to the 576px wide wizard column and as tall as its content (steps 1 to 3 of 7; step 1 is filled in with the user name "reader" and a sample password, step 2 shows the zone suggested by a neutral browser time zone, Europe/London, set with the Playwright context option `timezoneId`). Captured from a throwaway instance of the app
+- `screenshots/`: four WebP files listed in the Screenshots component. Captured from a throwaway instance of the app
   by the app repo's `scripts/maintainers/site-shots.mjs` (run at every release that changes the UI, `docs/maintainers/RELEASING.md` step 12), after
   `KIPPLE_SEED_SET=site npm run seed`, which seeds Wikimedia Picture of the Day, Wikipedia Featured Article, NASA
   Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-10-25 at app commit `v1.5.0` (`8a6cf84a5446e2b1c3a54582f39a827c57573b0f`), straight from the seed with no extra folders, so the sidebar shows the single "Less noise" folder. Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
