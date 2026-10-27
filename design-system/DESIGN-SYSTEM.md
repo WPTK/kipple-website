@@ -182,20 +182,6 @@ Uses the content-section grid. Left cell: the H2 "What it looks like". Right cel
   shot) spans both columns, so the two phones sit side by side beneath it.
 - Note copy: `The web app in Paper and Midnight, on desktop and on a phone. The sample feeds are public ones, including the Wikimedia Commons picture of the day. Photo credits and licenses are on Commons.`
 
-### Fact list (`dl.facts`)
-- Grid, gap 1.1rem (17.6px), no margin.
-- Each row: grid with columns `7.5rem` (120px) and `minmax(0, 1fr)`, gap 0.5rem (8px) row and 1rem (16px)
-  column. Mobile: one column, gap 0.1rem (1.6px).
-- Label (`dt`): JetBrains Mono 13px, `--muted`, padding-top 0.2rem (3.2px). Text (`dd`): no margin.
-- Rows, in order: refresh, retention, sync, themes, fonts, stats.
-
-### Anti-feature list (`ul.plain`)
-- No bullets, no margin or padding, grid gap 0.35rem (5.6px), 18.4px.
-- Each item has a cross mark before it: the character U+2715, JetBrains Mono 13px, `--muted`, 0.75rem (12px) of
-  space after it.
-- Items: No AI / No notifications / No social / No monitoring or telemetry*
-- Footnote under the list uses the "text after code block" style (15.2px, `--muted`, margin-top 1rem).
-
 ### Code block (`pre`)
 - Padding 1rem 1.15rem (16px 18.4px), `--surface` background, `1px solid --line` border, radius 3px,
   `overflow-x: auto`, JetBrains Mono 14px, line height 1.7. Comment lines (`.c`) are `--muted`.

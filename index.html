@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kipple, a self-hosted RSS reader</title>
-<meta name="description" content="A self-hosted RSS reader for one person. Pictures up front, works with the apps you already use.">
+<meta name="description" content="A self-hosted RSS reader for one person. Layouts that start with the picture, day and night color schemes, and sync with Google Reader compatible apps.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kipple">
 <meta property="og:title" content="Kipple, a self-hosted RSS reader">
-<meta property="og:description" content="A self-hosted RSS reader for one person. Pictures up front, works with the apps you already use.">
+<meta property="og:description" content="A self-hosted RSS reader for one person. Layouts that start with the picture, day and night color schemes, and sync with Google Reader compatible apps.">
 <meta property="og:url" content="https://kipple.cc/">
 <meta property="og:image" content="https://kipple.cc/og.png">
 <meta property="og:image:width" content="1280">
@@ -49,7 +49,7 @@
     <div class="wrap">
       <div>
         <h1>Self-hosted RSS reader.</h1>
-        <p class="lede">An RSS reader for one person, on your own server, with the pictures up front.</p>
+        <p class="lede">An RSS reader for one person, on a machine you run.</p>
         <div class="cta">
           <a class="btn primary" href="https://github.com/WPTK/Kipple">View on GitHub</a>
           <a class="btn plain" href="#install">Install it</a>
@@ -101,14 +101,13 @@
       <div>
         <h2>What's different</h2>
       </div>
-      <dl class="facts">
-        <div><dt>pictures</dt><dd>Articles lead with their images. Layouts run from magazine-style to plain lists.</dd></div>
-        <div><dt>one person</dt><dd>One account. No sharing, no teams.</dd></div>
-        <div><dt>your server</dt><dd>Your feeds and reading history stay on it.</dd></div>
-        <div><dt>your apps</dt><dd>Syncs with the RSS apps you already use.</dd></div>
-        <div><dt>no</dt><dd>AI, notifications or social features.</dd></div>
-        <div><dt>built with</dt><dd>Claude Code.</dd></div>
-      </dl>
+      <div class="clients">
+        <p>The layouts are grouped by how you read. Editorial, the default, opens each article with its photo and the first lines of text; Cards does the same as a grid. Compact, Inbox and Headlines are lists for getting through a lot. Gazette and Digest turn the day into pages and sections for a slower read. Each device keeps its own choice, and a folder or a single feed can have its own.</p>
+        <p>Color schemes come in day and night pairs. Follow the system, put them on a schedule, or pick one and leave it.</p>
+        <p>One account. Your feeds, read state and reading stats sit in a database on your server, and the yearly summary is drawn from there. Any app that syncs with a Google Reader account syncs with Kipple.</p>
+        <p>Left out on purpose: AI, notifications, social features, podcast players and tags.</p>
+        <p>Made by one person, with Claude Code.</p>
+      </div>
     </div>
   </section>
 
@@ -118,7 +117,7 @@
         <h2>Install</h2>
       </div>
       <div class="clients">
-        <p>Kipple runs as a Docker image. The <a href="https://github.com/WPTK/Kipple#install">README</a> has the command, and the <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">deploy guide</a> covers the rest, including how to run it safely.</p>
+        <p>Kipple is a Docker image. The <a href="https://github.com/WPTK/Kipple#install">README</a> has the one-line command, and the <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">deploy guide</a> covers backups and upgrades.</p>
       </div>
     </div>
   </section>
