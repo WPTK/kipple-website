@@ -163,10 +163,8 @@ h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; }
 .sect .wrap { display: grid; gap: 1.5rem 3rem; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
 .sect h2 + p { margin: 0.75rem 0 0; color: var(--muted); max-width: 26rem; }
 
-dl.facts { margin: 0; display: grid; gap: 1.1rem; }
-dl.facts div { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 0.5rem 1rem; }
-dl.facts dt { font-family: "JetBrains Mono", monospace; font-size: 0.8125rem; color: var(--muted); padding-top: 0.2rem; }
-dl.facts dd { margin: 0; }
+
+ul.bullets { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.6rem; max-width: 36rem; }
 
 ul.plain { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35rem; font-size: 1.15rem; }
 ul.plain li::before { content: "\2715"; font-family: "JetBrains Mono", monospace; font-size: 0.8125rem; color: var(--muted); margin-right: 0.75rem; }
@@ -212,7 +210,6 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content
   .hero .wrap, .sect .wrap { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
   .hero { padding-block: 2.25rem 2.5rem; }
   .sect { padding-block: 2.25rem; }
-  dl.facts div { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
   .shot-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
   .shot-row .shot:first-child { grid-column: 1 / -1; }
   .shots-note { align-self: start; }
@@ -222,3 +219,5 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content
 @media (prefers-reduced-motion: no-preference) {
   .btn, .nav a { transition: background-color 120ms, color 120ms; }
 }
+
+.status + .status { margin-top: 0.75rem; }

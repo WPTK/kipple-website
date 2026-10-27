@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kipple, a self-hosted RSS reader</title>
-<meta name="description" content="Self-hosted RSS reader that syncs with any RSS client that is Google Reader compatible. One container, one port, SQLite.">
+<meta name="description" content="A self-hosted RSS reader you run yourself. Layouts that start with the picture, day and night color schemes, and sync with Google Reader compatible apps.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kipple">
 <meta property="og:title" content="Kipple, a self-hosted RSS reader">
-<meta property="og:description" content="Self-hosted RSS reader that syncs with any RSS client that is Google Reader compatible. One container, one port, SQLite.">
+<meta property="og:description" content="A self-hosted RSS reader you run yourself. Layouts that start with the picture, day and night color schemes, and sync with Google Reader compatible apps.">
 <meta property="og:url" content="https://kipple.cc/">
 <meta property="og:image" content="https://kipple.cc/og.png">
 <meta property="og:image:width" content="1280">
@@ -49,7 +49,7 @@
     <div class="wrap">
       <div>
         <h1>Self-hosted RSS reader.</h1>
-        <p class="lede">Kipple keeps everything in SQLite, runs as one container on one port, and syncs with any app that speaks the Google Reader API.</p>
+        <p class="lede">Your own RSS reader, on your own machine.</p>
         <div class="cta">
           <a class="btn primary" href="https://github.com/WPTK/Kipple">View on GitHub</a>
           <a class="btn plain" href="#install">Install it</a>
@@ -77,9 +77,8 @@
   <section class="sect shots" id="screens">
     <div class="wrap">
       <div>
-        <h2>What it looks like</h2>
+        <h2>Screenshots</h2>
       </div>
-      <p class="shots-note">The web app in Paper and Midnight, on desktop and phone. The sample feeds are public, including the Wikimedia Commons picture of the day; credits are on Commons.</p>
       <figure class="shot wide">
         <img src="screenshots/desktop-paper.webp" width="1800" height="1125" alt="Kipple on a desktop in the Paper color scheme. A sidebar on the left with Unread, All articles, Starred, Muted, Search, Feeds and Feed index, and a Less noise folder holding five feeds. Article cards in the middle with a large photo of a foggy autumn hillside, and the article open on the right.">
       </figure>
@@ -100,29 +99,16 @@
   <section class="sect">
     <div class="wrap">
       <div>
-        <h2>Why another RSS reader</h2>
+        <h2>What's different</h2>
       </div>
-      <div class="story">
-        <p>I wanted one reader with the best parts of the others. Kipple is built with Claude Code.</p>
-        <p>The layout is magazine-style, with images up front. It has one user.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sect">
-    <div class="wrap">
-      <div>
-        <h2>How it works</h2>
-      </div>
-      <dl class="facts">
-        <div><dt>refresh</dt><dd>Every 30 minutes, with an optional interval per feed. A failing feed backs off. You can refresh everything by hand.</dd></div>
-        <div><dt>folders</dt><dd>Folders nest up to eight levels deep. OPML import and export keep the tree.</dd></div>
-        <div><dt>retention</dt><dd>Each feed keeps its newest 50, 100, 250, 500 or 1000 items, or all of them. Set it globally, then per feed.</dd></div>
-        <div><dt>sync</dt><dd>A Google Reader compatible API at <code>/api/greader.php</code>.</dd></div>
-        <div><dt>themes</dt><dd>Color schemes, with separate picks for day and night.</dd></div>
-        <div><dt>fonts</dt><dd>Reading fonts, including Atkinson Hyperlegible.</dd></div>
-        <div><dt>stats</dt><dd>Reading time counts only while the tab is visible and focused.</dd></div>
-      </dl>
+      <ul class="bullets">
+        <li>Layouts grouped by how you read. Editorial, the default, and Cards open each article with its photo. Compact, Inbox and Headlines are lists for getting through a lot. Gazette and Digest turn the day into pages and sections.</li>
+        <li>Each device keeps its own layout, and a folder or a single feed can have its own.</li>
+        <li>Color schemes in day and night pairs. Follow the system, put them on a schedule, or pick a scheme and keep it.</li>
+        <li>Just you. Your feeds, read state and reading stats sit in a database on your server, and the yearly summary comes from there.</li>
+        <li>Any app that syncs with a Google Reader account syncs with Kipple.</li>
+        <li>Made with Claude Code.</li>
+      </ul>
     </div>
   </section>
 
@@ -141,67 +127,13 @@
     </div>
   </section>
 
-  <section class="sect">
-    <div class="wrap">
-      <h2>Bring your own client</h2>
-      <div class="clients">
-        <p>Any app that supports a Google Reader compatible account can sync. Setup steps are in the <a href="https://github.com/WPTK/Kipple#readme">README</a>.</p>
-      </div>
-    </div>
-  </section>
-
   <section class="sect" id="install">
     <div class="wrap">
       <div>
-        <h2>Install it</h2>
-        <p>Kipple is a signed Docker image for linux/amd64 and linux/arm64.</p>
+        <h2>Install</h2>
       </div>
-      <div>
-<pre><code>docker run -d --name kipple --restart unless-stopped -p 127.0.0.1:1919:1919 -v kipple_data:/data --read-only --tmpfs /tmp:size=64m,mode=1777 --cap-drop ALL --security-opt no-new-privileges ghcr.io/wptk/kipple:1.5.1</code></pre>
-        <p class="after-code">Or as a compose file. Save it as <code>docker-compose.yml</code> and run <code>docker compose up -d</code>.</p>
-<pre><code>services:
-  kipple:
-    image: ghcr.io/wptk/kipple:1.5.1
-    container_name: kipple
-    restart: unless-stopped
-    ports: ["127.0.0.1:1919:1919"]
-    volumes: ["kipple_data:/data"]
-    read_only: true
-    tmpfs: ["/tmp:size=64m,mode=1777"]
-    cap_drop: [ALL]
-    security_opt: ["no-new-privileges:true"]
-volumes:
-  kipple_data:</code></pre>
-        <p class="after-code">Open <code>http://127.0.0.1:1919</code> on the machine that runs Kipple. The port is published on that machine only.</p>
-        <p class="after-code">If Kipple runs on another machine, open an SSH tunnel from the computer you browse on and leave it open:</p>
-<pre><code>ssh -L 1919:127.0.0.1:1919 you@your-server</code></pre>
-        <p class="after-code">Until you create your account, anyone who can reach the port can claim it. Do not expose Kipple on the open internet over plain http; put HTTPS in front of it.</p>
-        <p class="after-code">A backup file holds password hashes and feed logins. Keep it private.</p>
-        <p class="after-code">To build from source, see the <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md#build-from-source">deploy guide</a>. You need Docker and Git. Backups, recovery and reverse-proxy notes are in <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">docs/deploy.md</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sect shots" id="setup">
-    <div class="wrap">
-      <div>
-        <h2>First run</h2>
-      </div>
-      <div class="setup-text">
-        <p>The first screen creates your account.</p>
-        <p>Every step after the account can be skipped: time zone, look, import (OPML), recommended feeds, server address, app password.</p>
-        <p class="notice"><b>No password?</b> The account step offers to go without one. An instance with no password must be reachable only from localhost or over <a href="https://tailscale.com/">Tailscale</a>, a private VPN. Anyone who can reach it can read and change everything. Kipple refuses open sign-in through a reverse proxy or tunnel.</p>
-      </div>
-      <div class="shot-row steps">
-        <figure class="shot">
-          <img src="screenshots/wizard-account.webp" width="864" height="1424" alt="Setup step 1 of 7, Create your account: a user name field and two choices, With a password, selected, and No password at all, with a note that it is only for a Kipple reachable from this computer, your local network or Tailscale.">
-        </figure>
-        <figure class="shot">
-          <img src="screenshots/wizard-timezone.webp" width="864" height="1113" alt="Setup step 2 of 7, Choose your time zone: the zone suggested from the browser, a search box and a list of zones, with Skip and Continue buttons.">
-        </figure>
-        <figure class="shot">
-          <img src="screenshots/wizard-theme.webp" width="864" height="1344" alt="Setup step 3 of 7, Look and feel: day and night theme pickers showing Paper and Midnight previews, and a reading font picker.">
-        </figure>
+      <div class="clients">
+        <p>Kipple is a Docker image. The <a href="https://github.com/WPTK/Kipple#install">README</a> has the command, and the <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">deploy guide</a> covers backups and upgrades.</p>
       </div>
     </div>
   </section>
@@ -209,13 +141,15 @@ volumes:
   <section class="sect">
     <div class="wrap">
       <h2>Where it stands</h2>
-      <p class="status"><span class="mono">v1.5.1</span> is the current stable release. What stays the same across 1.x is in the <a href="https://github.com/WPTK/Kipple/blob/main/docs/compatibility.md">compatibility notes</a>. The diary and decisions are in <a href="https://github.com/WPTK/kipple-history">kipple-history</a>.</p>
+      <p class="status"><span class="mono">v1.5.1</span> is the current stable release.</p>
+      <p class="status links"><a href="https://github.com/WPTK/Kipple/blob/main/CHANGELOG.md">Changelog</a> &middot; <a href="https://github.com/WPTK/Kipple/blob/main/docs/README.md">Docs</a> &middot; <a href="https://github.com/WPTK/kipple-history">History</a></p>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
+    <span>Screenshots use public feeds. Images belong to their publishers and Wikimedia Commons contributors; credits are at the source.</span>
     <span>The Kipple app is licensed under the <a href="https://github.com/WPTK/Kipple/blob/main/LICENSE">Blue Oak Model License 1.0.0</a>. This site is in the public domain under the <a href="https://github.com/WPTK/kipple-website/blob/main/LICENSE">Unlicense</a>.</span>
     <span><a href="https://github.com/WPTK/Kipple">Source</a> &middot; <a href="https://github.com/WPTK/kipple-history">History</a> &middot; <a href="https://wptk.org">wptk.org</a></span>
   </div>
