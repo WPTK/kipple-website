@@ -112,9 +112,10 @@ the site and were not taken from the app. If parity with the app matters, decide
 2. Hero
 3. "Screenshots" (section, id `screens`)
 4. "What's different" (section)
-5. "Install" (section, id `install`)
-6. "Where it stands" (section)
-7. Footer
+5. "Anti-features" (section)
+6. "Install" (section, id `install`)
+7. "Where it stands" (section)
+8. Footer
 
 ## 6. Components
 
@@ -182,6 +183,17 @@ Uses the content-section grid. Left cell: the H2 "What it looks like". Right cel
   shot) spans both columns, so the two phones sit side by side beneath it.
 - Note copy: `The web app in Paper and Midnight, on desktop and on a phone. The sample feeds are public ones, including the Wikimedia Commons picture of the day. Photo credits and licenses are on Commons.`
 
+### Bullet list (`ul.bullets`)
+- Default bullets, padding-left 1.2rem (19.2px), no margin, grid gap 0.6rem (9.6px), max width 36rem (576px).
+- Used by "What's different".
+
+### Anti-feature list (`ul.plain`)
+- No bullets, no margin or padding, grid gap 0.35rem (5.6px), 18.4px.
+- Each item has a cross mark before it: the character U+2715, JetBrains Mono 13px, `--muted`, 0.75rem (12px) of
+  space after it.
+- Items: No AI / No notifications / No social / No monitoring or telemetry*
+- Footnote under the list uses the "text after code block" style (15.2px, `--muted`, margin-top 1rem).
+
 ### Code block (`pre`)
 - Padding 1rem 1.15rem (16px 18.4px), `--surface` background, `1px solid --line` border, radius 3px,
   `overflow-x: auto`, JetBrains Mono 14px, line height 1.7. Comment lines (`.c`) are `--muted`.
@@ -223,7 +235,7 @@ for reduced motion. No other animation.
 - Definition: `kipple /ˈkɪpəl/ n. Philip K. Dick's word for the useless things that pile up when nobody is looking. Your unread count, mostly.`
 - Sample panel: big count `420`, label `unread across 6 feeds`. Feeds and counts: Unsung 187, 512 Pixels 101, Storied
   Colors 69, Electrek 42, McSweeney's 13, Saturday Down South 8. The counts total 420. Rows 1 and 2 are `hot`.
-- Section headings: Screenshots / What's different / Install / Where it stands.
+- Section headings: Screenshots / What's different / Anti-features / Install / Where it stands.
 - Footer: `The Kipple app is licensed under the Blue Oak Model License 1.0.0. This site is in the public domain under the Unlicense.` (each license name is a link), then links Source, History, wptk.org.
 - `index.html` is the canonical copy for every sentence. Do not paraphrase it when rebuilding.
 
