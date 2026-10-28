@@ -131,7 +131,12 @@
         <h2>Install</h2>
       </div>
       <div class="clients">
-        <p>The <a href="https://github.com/WPTK/Kipple#install">README</a> has the command. Backups and upgrades are in the <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">deploy guide</a>.</p>
+        <pre><code>docker run -d --name kipple \
+  --restart unless-stopped \
+  -p 127.0.0.1:1919:1919 \
+  -v kipple_data:/data \
+  ghcr.io/wptk/kipple:latest</code></pre>
+        <p>Then open <code>http://127.0.0.1:1919</code> and create your account. To reach it from other devices, put it behind a <a href="https://github.com/WPTK/Kipple/blob/main/docs/reverse-proxy.md">reverse proxy</a>. Backups and upgrades are in the <a href="https://github.com/WPTK/Kipple/blob/main/docs/deploy.md">deploy guide</a>.</p>
       </div>
     </div>
   </section>

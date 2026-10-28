@@ -194,7 +194,7 @@ Uses the content-section grid. Left cell: the H2 "What it looks like". Right cel
 
 ### Code block (`pre`)
 - Padding 1rem 1.15rem (16px 18.4px), `--surface` background, `1px solid --line` border, radius 3px,
-  `overflow-x: auto`, JetBrains Mono 14px, line height 1.7. Comment lines (`.c`) are `--muted`.
+  `white-space: pre-wrap` so a long command wraps instead of scrolling, JetBrains Mono 14px, line height 1.7. Comment lines (`.c`) are `--muted`.
 - Inline `code` in text uses JetBrains Mono at the surrounding size. In the text after a code block, `code` is
   `--ink`.
 
@@ -239,7 +239,7 @@ for reduced motion. No other animation.
 - No em dashes, no colon-as-connector, no "not X but Y", no marketing adjectives, no emoji.
 - Do not name other RSS readers or apps anywhere.
 - No real names or hostnames. Copyright line reads "Kipple contributors".
-- The Install section is one sentence that points to the README and the deploy guide. It carries no command or image tag. "Where it stands" holds the current version; update it with every release.
+- The Install section shows the README's `docker run` command, one flag per line, with the `latest` tag (never a version, so it does not go stale), then one short paragraph linking the reverse proxy and deploy guides. If the README command changes, change it here too. "Where it stands" holds the current version; update it with every release.
 
 ## 10. Assets and links
 
