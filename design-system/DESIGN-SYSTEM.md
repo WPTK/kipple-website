@@ -51,7 +51,6 @@ Latin subset only. Preload: `atkinson-hyperlegible-next-latin-400-normal.woff2`.
 | Anti-feature mark (the cross) | JetBrains Mono | 13px (0.8125rem) | 400 | 1.6 | normal |
 | Code block | JetBrains Mono | 14px (0.875rem) | 400 | 1.7 | normal |
 | Text after code block | Atkinson | 15.2px (0.95rem) | 400 | 1.6 | normal |
-| Status version tag | JetBrains Mono | 14.4px (0.9rem) | 400 | 1.6 | normal |
 | Footer | Atkinson | 14px (0.875rem) | 400 | 1.6 | normal |
 
 Headings use `text-wrap: balance`. Numeric columns use `font-variant-numeric: tabular-nums` (unread count and
@@ -111,10 +110,10 @@ the site and were not taken from the app. If parity with the app matters, decide
 1. Header
 2. Hero
 3. "Screenshots" (section, id `screens`)
-4. "What's different" (section)
+4. "Features" (section)
 5. "Anti-features" (section)
 6. "Install" (section, id `install`)
-7. "Where it stands" (section)
+7. "Credits" (section)
 8. Footer
 
 ## 6. Components
@@ -185,25 +184,23 @@ Uses the content-section grid. Left cell: the H2 "What it looks like". Right cel
 
 ### Bullet list (`ul.bullets`)
 - Default bullets, padding-left 1.2rem (19.2px), no margin, grid gap 0.6rem (9.6px), max width 36rem (576px).
-- Used by "What's different".
+- Used by "Features".
 
 ### Anti-feature list (`ul.plain`)
 - No bullets, no margin or padding, grid gap 0.35rem (5.6px), 18.4px.
 - Each item has a cross mark before it: the character U+2715, JetBrains Mono 13px, `--muted`, 0.75rem (12px) of
   space after it.
-- Items: No AI / No notifications / No social / No monitoring or telemetry*
-- Footnote under the list uses the "text after code block" style (15.2px, `--muted`, margin-top 1rem).
 
 ### Code block (`pre`)
 - Padding 1rem 1.15rem (16px 18.4px), `--surface` background, `1px solid --line` border, radius 3px,
-  `overflow-x: auto`, JetBrains Mono 14px, line height 1.7. Comment lines (`.c`) are `--muted`.
+  `white-space: pre-wrap` so a long command wraps instead of scrolling, JetBrains Mono 14px, line height 1.7. Comment lines (`.c`) are `--muted`.
 - Inline `code` in text uses JetBrains Mono at the surrounding size. In the text after a code block, `code` is
   `--ink`.
 
 ### Footer
 - Top border `1px solid --line`, padding-block 2rem (32px) 3rem (48px), 14px, `--muted`.
 - Inner `.wrap`: flex, wrap, gap 0.5rem (8px) row and 2rem (32px) column, `justify-content: space-between`.
-- Left: license sentence. Right: Source, History, wptk.org links separated by a middle dot.
+- Left: license sentence. Right: Source, Docs, History, wptk.org links separated by a middle dot.
 
 ### Links and focus
 - Links: `--accent`, `text-underline-offset: 0.18em`; on hover `text-decoration-thickness: 2px`.
@@ -219,33 +216,29 @@ for reduced motion. No other animation.
   `kipple-scheme`. A saved value sets `data-scheme` on `<html>`. Clicking a button sets or clears it and writes
   or removes the key. Every read and write is wrapped in try/catch, and the page works with storage unavailable.
 - Buttons expose state with `aria-pressed`.
-- Anchor `#install` scrolls to the Install it section.
+- Anchor `#install` scrolls to the Install section.
 - Skip link (`.skip`, first element in `<body>`, target `<main id="main">`): off screen (`top: -4rem`) until it has keyboard
   focus, then `top: 0.5rem`. Accent background, `--on-accent` text, 600 weight, padding 0.65rem 1.1rem, radius 3px.
 - Tap targets: links inside paragraphs, definition descriptions and the footer get `padding-block: 0.25rem` (footer links
   are also `inline-block`), so each is at least 24px tall.
 
-## 8. Content (exact copy as of this commit)
+## 8. Content
 
-- Title: `Kipple, a self-hosted RSS reader`
-- Description: `Self-hosted RSS reader that syncs with any RSS client that speaks the Google Reader API. One container, one port, SQLite.`
-- H1: `Self-hosted RSS reader.`
-- Lede: `Kipple syncs with the RSS apps you already use, keeps everything in SQLite, and runs as one container on one port. It's built to look good while you read.`
-- Buttons: `View on GitHub` (primary, https://github.com/WPTK/Kipple), `Install it` (plain, `#install`)
-- Definition: `kipple /ˈkɪpəl/ n. Philip K. Dick's word for the useless things that pile up when nobody is looking. Your unread count, mostly.`
+`index.html` holds the copy and is its only source; this file does not repeat it.
+
 - Sample panel: big count `420`, label `unread across 6 feeds`. Feeds and counts: Unsung 187, 512 Pixels 101, Storied
   Colors 69, Electrek 42, McSweeney's 13, Saturday Down South 8. The counts total 420. Rows 1 and 2 are `hot`.
-- Section headings: Screenshots / What's different / Anti-features / Install / Where it stands.
-- Footer: `The Kipple app is licensed under the Blue Oak Model License 1.0.0. This site is in the public domain under the Unlicense.` (each license name is a link), then links Source, History, wptk.org.
-- `index.html` is the canonical copy for every sentence. Do not paraphrase it when rebuilding.
 
 ## 9. Copy rules
 
 - Plain and specific. Short sentences. State what it does, with real numbers and paths.
+- The lede adds what the H1 does not say (how it runs, how you read). It never restates the H1.
+- Say each thing once on the page. If a footnote or bullet repeats another line, cut one.
+- Every claim matches a label or setting in the current release.
 - No em dashes, no colon-as-connector, no "not X but Y", no marketing adjectives, no emoji.
 - Do not name other RSS readers or apps anywhere.
 - No real names or hostnames. Copyright line reads "Kipple contributors".
-- The Install section is one sentence that points to the README and the deploy guide. It carries no command or image tag. "Where it stands" holds the current version; update it with every release.
+- The Install section shows the README's `docker run` command, one flag per line, with the `latest` tag (never a version, so it does not go stale), then one short paragraph linking the reverse proxy and deploy guides. If the README command changes, change it here too. The site names no version, so a release changes it only when the screenshots change.
 
 ## 10. Assets and links
 
@@ -256,10 +249,10 @@ for reduced motion. No other animation.
 - `screenshots/`: four WebP files listed in the Screenshots component. Captured from a throwaway instance of the app
   by the app repo's `scripts/maintainers/site-shots.mjs` (run at every release that changes the UI, `docs/maintainers/RELEASING.md` step 12), after
   `KIPPLE_SEED_SET=site npm run seed`, which seeds Wikimedia Picture of the Day, Wikipedia Featured Article, NASA
-  Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-10-25 at app commit `v1.5.0` (`8a6cf84a5446e2b1c3a54582f39a827c57573b0f`), straight from the seed with no extra folders, so the sidebar shows the single "Less noise" folder. Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
+  Image of the Day, Go Blog and Hacker News in a folder named "Less noise". Last captured 2026-10-28 at app commit `v1.6.0` (`79c4719675fe63b7c452bd755d3af5a47524b33b`), straight from the seed with no extra folders, so the sidebar shows the single "Less noise" folder. Desktop: a 1440 x 900 viewport at 1.25x, giving 1800 x 1125 directly. Phone: 390 x 844
   at 1.5x, giving 585 x 1266. The list uses the device's default layout (Editorial). Light is the app's Paper scheme.
   Dark is the app following a dark system setting, which gives Midnight. Article shown: the Wikimedia Commons picture
-  of the day for October 25 (morning fog over a hillside in the Skolivskyi Beskids, Ukraine). The WebP files are encoded by the browser
+  of the day for October 28 (a 71-931M "Vityaz" tram at Tverskaya Zastava Square, Moscow). The WebP files are encoded by the browser
   at quality 0.85. `og.png` is re-rendered by the same script from `design-system/social-preview.html`.
 - The hero sample panel (unread count 420) is HTML and CSS, not a screenshot.
 - Favicon: `favicon.svg`, `favicon.ico` (16, 32 and 48 px), `apple-touch-icon.png` (180 x 180).

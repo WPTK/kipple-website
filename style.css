@@ -174,16 +174,13 @@ ul.plain li::before { content: "\2715"; font-family: "JetBrains Mono", monospace
 .schemes { flex-wrap: wrap; }
 
 pre {
-  margin: 0; padding: 1rem 1.15rem; overflow-x: auto;
+  margin: 0; padding: 1rem 1.15rem; white-space: pre-wrap; overflow-wrap: anywhere;
   background: var(--surface); border: 1px solid var(--line); border-radius: 3px;
   font-size: 0.875rem; line-height: 1.7;
 }
 pre .c { color: var(--muted); }
-.after-code { margin: 1rem 0 0; font-size: 0.95rem; color: var(--muted); }
-.after-code code { color: var(--ink); }
 
 .status { margin: 0; }
-.status .mono { font-size: 0.9rem; }
 
 .setup-text { color: var(--muted); max-width: 40rem; }
 .setup-text p { margin: 0 0 1rem; }
@@ -220,4 +217,3 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content
   .btn, .nav a { transition: background-color 120ms, color 120ms; }
 }
 
-.status + .status { margin-top: 0.75rem; }
