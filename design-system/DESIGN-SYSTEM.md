@@ -51,7 +51,6 @@ Latin subset only. Preload: `atkinson-hyperlegible-next-latin-400-normal.woff2`.
 | Anti-feature mark (the cross) | JetBrains Mono | 13px (0.8125rem) | 400 | 1.6 | normal |
 | Code block | JetBrains Mono | 14px (0.875rem) | 400 | 1.7 | normal |
 | Text after code block | Atkinson | 15.2px (0.95rem) | 400 | 1.6 | normal |
-| Status version tag | JetBrains Mono | 14.4px (0.9rem) | 400 | 1.6 | normal |
 | Footer | Atkinson | 14px (0.875rem) | 400 | 1.6 | normal |
 
 Headings use `text-wrap: balance`. Numeric columns use `font-variant-numeric: tabular-nums` (unread count and
@@ -114,7 +113,7 @@ the site and were not taken from the app. If parity with the app matters, decide
 4. "Features" (section)
 5. "Anti-features" (section)
 6. "Install" (section, id `install`)
-7. "Where it stands" (section)
+7. "Credits" (section)
 8. Footer
 
 ## 6. Components
@@ -201,7 +200,7 @@ Uses the content-section grid. Left cell: the H2 "What it looks like". Right cel
 ### Footer
 - Top border `1px solid --line`, padding-block 2rem (32px) 3rem (48px), 14px, `--muted`.
 - Inner `.wrap`: flex, wrap, gap 0.5rem (8px) row and 2rem (32px) column, `justify-content: space-between`.
-- Left: license sentence. Right: Source, History, wptk.org links separated by a middle dot.
+- Left: license sentence. Right: Source, Docs, History, wptk.org links separated by a middle dot.
 
 ### Links and focus
 - Links: `--accent`, `text-underline-offset: 0.18em`; on hover `text-decoration-thickness: 2px`.
@@ -239,7 +238,7 @@ for reduced motion. No other animation.
 - No em dashes, no colon-as-connector, no "not X but Y", no marketing adjectives, no emoji.
 - Do not name other RSS readers or apps anywhere.
 - No real names or hostnames. Copyright line reads "Kipple contributors".
-- The Install section shows the README's `docker run` command, one flag per line, with the `latest` tag (never a version, so it does not go stale), then one short paragraph linking the reverse proxy and deploy guides. If the README command changes, change it here too. "Where it stands" holds the current version; update it with every release.
+- The Install section shows the README's `docker run` command, one flag per line, with the `latest` tag (never a version, so it does not go stale), then one short paragraph linking the reverse proxy and deploy guides. If the README command changes, change it here too. The site names no version, so a release changes it only when the screenshots change.
 
 ## 10. Assets and links
 

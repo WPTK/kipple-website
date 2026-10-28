@@ -181,7 +181,6 @@ pre {
 pre .c { color: var(--muted); }
 
 .status { margin: 0; }
-.status .mono { font-size: 0.9rem; }
 
 .setup-text { color: var(--muted); max-width: 40rem; }
 .setup-text p { margin: 0 0 1rem; }
@@ -218,4 +217,3 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; justify-content
   .btn, .nav a { transition: background-color 120ms, color 120ms; }
 }
 
-.status + .status { margin-top: 0.75rem; }
