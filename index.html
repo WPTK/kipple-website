@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kipple, a self-hosted RSS reader</title>
-<meta name="description" content="A self-hosted RSS reader you run yourself. Layouts that start with the picture, day and night color schemes, and sync with Google Reader compatible apps.">
+<meta name="description" content="A self-hosted RSS reader with picture-led and list layouts, separate day and night color schemes, and sync with Google Reader compatible apps.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kipple">
 <meta property="og:title" content="Kipple, a self-hosted RSS reader">
-<meta property="og:description" content="A self-hosted RSS reader you run yourself. Layouts that start with the picture, day and night color schemes, and sync with Google Reader compatible apps.">
+<meta property="og:description" content="A self-hosted RSS reader with picture-led and list layouts, separate day and night color schemes, and sync with Google Reader compatible apps.">
 <meta property="og:url" content="https://kipple.cc/">
 <meta property="og:image" content="https://kipple.cc/og.png">
 <meta property="og:image:width" content="1280">
@@ -49,7 +49,7 @@
     <div class="wrap">
       <div>
         <h1>Self-hosted RSS reader.</h1>
-        <p class="lede">Your own RSS reader, on your own machine.</p>
+        <p class="lede">Runs in Docker on your server. Read in a browser, or in any app that syncs with a Google Reader account.</p>
         <div class="cta">
           <a class="btn primary" href="https://github.com/WPTK/Kipple">View on GitHub</a>
           <a class="btn plain" href="#install">Install it</a>
@@ -80,7 +80,7 @@
         <h2>Screenshots</h2>
       </div>
       <figure class="shot wide">
-        <img src="screenshots/desktop-paper.webp" width="1800" height="1125" alt="Kipple on a desktop in the Paper color scheme. A sidebar on the left with Unread, All articles, Starred, Muted, Search, Feeds and Feed index, and a Less noise folder holding five feeds. Article cards in the middle with a large photo of a foggy autumn hillside, and the article open on the right.">
+        <img src="screenshots/desktop-paper.webp" width="1800" height="1125" alt="Kipple on a desktop in the Paper color scheme. A sidebar on the left with Unread, All articles, Starred, Muted, Search, Feeds and Feed index, and a Less noise folder holding five feeds. The Wikimedia Picture of the Day feed in the middle with a large photo of a tram, and the same article open on the right.">
       </figure>
       <div class="shot-row">
         <figure class="shot">
@@ -102,11 +102,10 @@
         <h2>What's different</h2>
       </div>
       <ul class="bullets">
-        <li>Layouts grouped by how you read. Editorial, the default, and Cards open each article with its photo. Compact, Inbox and Headlines are lists for getting through a lot. Gazette and Digest turn the day into pages and sections.</li>
-        <li>Each device keeps its own layout, and a folder or a single feed can have its own.</li>
-        <li>Color schemes in day and night pairs. Follow the system, put them on a schedule, or pick a scheme and keep it.</li>
-        <li>Just you. Your feeds, read state and reading stats sit in a database on your server, and the yearly summary comes from there.</li>
-        <li>Any app that syncs with a Google Reader account syncs with Kipple.</li>
+        <li>Editorial and Cards lead with the picture. Compact, Inbox and Headlines are lists for catching up. Gazette turns the list into pages, and Digest groups it by folder, feed or reading time.</li>
+        <li>Each device, folder and feed can have its own layout.</li>
+        <li>Separate day and night color schemes. Switch with your device, on a schedule, or keep one.</li>
+        <li>Reading stats and a summary of your year, kept on your server.</li>
         <li>Made with Claude Code.</li>
       </ul>
     </div>
@@ -120,9 +119,8 @@
           <li>No AI</li>
           <li>No notifications</li>
           <li>No social</li>
-          <li>No monitoring or telemetry*</li>
+          <li>No monitoring or telemetry</li>
         </ul>
-        <p class="after-code">*Kipple keeps reading statistics in your own database. Nothing is sent anywhere.</p>
       </div>
     </div>
   </section>
@@ -141,7 +139,7 @@
   <section class="sect">
     <div class="wrap">
       <h2>Where it stands</h2>
-      <p class="status"><span class="mono">v1.5.1</span> is the current stable release.</p>
+      <p class="status">Current release: <span class="mono">v1.6.0</span></p>
       <p class="status links"><a href="https://github.com/WPTK/Kipple/blob/main/CHANGELOG.md">Changelog</a> &middot; <a href="https://github.com/WPTK/Kipple/blob/main/docs/README.md">Docs</a> &middot; <a href="https://github.com/WPTK/kipple-history">History</a></p>
     </div>
   </section>
@@ -149,7 +147,7 @@
 
 <footer>
   <div class="wrap">
-    <span>Screenshots use public feeds. Images belong to their publishers and Wikimedia Commons contributors; credits are at the source.</span>
+    <span>Screenshots show public feeds. Their images belong to the publishers and Wikimedia Commons contributors.</span>
     <span>The Kipple app is licensed under the <a href="https://github.com/WPTK/Kipple/blob/main/LICENSE">Blue Oak Model License 1.0.0</a>. This site is in the public domain under the <a href="https://github.com/WPTK/kipple-website/blob/main/LICENSE">Unlicense</a>.</span>
     <span><a href="https://github.com/WPTK/Kipple">Source</a> &middot; <a href="https://github.com/WPTK/kipple-history">History</a> &middot; <a href="https://wptk.org">wptk.org</a></span>
   </div>

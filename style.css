@@ -179,8 +179,6 @@ pre {
   font-size: 0.875rem; line-height: 1.7;
 }
 pre .c { color: var(--muted); }
-.after-code { margin: 1rem 0 0; font-size: 0.95rem; color: var(--muted); }
-.after-code code { color: var(--ink); }
 
 .status { margin: 0; }
 .status .mono { font-size: 0.9rem; }
