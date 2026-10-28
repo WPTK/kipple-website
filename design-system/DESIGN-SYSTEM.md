@@ -217,7 +217,7 @@ for reduced motion. No other animation.
   `kipple-scheme`. A saved value sets `data-scheme` on `<html>`. Clicking a button sets or clears it and writes
   or removes the key. Every read and write is wrapped in try/catch, and the page works with storage unavailable.
 - Buttons expose state with `aria-pressed`.
-- Anchor `#install` scrolls to the Install it section.
+- Anchor `#install` scrolls to the Install section.
 - Skip link (`.skip`, first element in `<body>`, target `<main id="main">`): off screen (`top: -4rem`) until it has keyboard
   focus, then `top: 0.5rem`. Accent background, `--on-accent` text, 600 weight, padding 0.65rem 1.1rem, radius 3px.
 - Tap targets: links inside paragraphs, definition descriptions and the footer get `padding-block: 0.25rem` (footer links
