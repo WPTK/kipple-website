@@ -111,7 +111,7 @@ the site and were not taken from the app. If parity with the app matters, decide
 1. Header
 2. Hero
 3. "Screenshots" (section, id `screens`)
-4. "What's different" (section)
+4. "Features" (section)
 5. "Anti-features" (section)
 6. "Install" (section, id `install`)
 7. "Where it stands" (section)
@@ -185,7 +185,7 @@ Uses the content-section grid. Left cell: the H2 "What it looks like". Right cel
 
 ### Bullet list (`ul.bullets`)
 - Default bullets, padding-left 1.2rem (19.2px), no margin, grid gap 0.6rem (9.6px), max width 36rem (576px).
-- Used by "What's different".
+- Used by "Features".
 
 ### Anti-feature list (`ul.plain`)
 - No bullets, no margin or padding, grid gap 0.35rem (5.6px), 18.4px.
